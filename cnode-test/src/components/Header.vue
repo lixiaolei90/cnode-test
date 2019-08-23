@@ -1,12 +1,13 @@
 <template>
     <div class="header">
-        <img src="" alt="">
+        <img src="../assets/cnodejs_light.svg" alt="">
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">新手入门</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">注册</a></li>
+            <li><a href="#">登录</a></li>
         </ul>
     </div>
 </template>
@@ -17,6 +18,32 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-
+<style scoped>
+   .header {
+       background-color: #5a5555;
+       height: 50px;
+       border: 1px solid yellow;
+   } 
+   img {
+       width: 120px;
+       margin-left: 50px;
+       margin-top: 10px;
+   }
+   ul {
+       list-style: none;
+       float: right;
+       border: 1px solid red;
+       margin: 4px;
+   }
+   li {
+       display: inline-block;
+       padding: 10px 15px;
+       border: 1px solid blue;
+   }
+   a {
+       text-decoration: none;
+       color: #ccc;
+       font-size: 14px;
+       /* text-shadow: none; */
+   }
 </style>
