@@ -18,6 +18,25 @@ export default {
         return {
             isLoading: false
         }
+    },
+    methods: {
+       getData(){
+           this.$http.get('https://cnodejs.org/api/v1/topics', {
+               page:1,
+               limit:20
+           })
+            .then(res=>{
+                this.isLoading = false;
+                debugger
+            })
+            .catch(function(err) {
+                console.log(err);
+            })
+       } 
+    },
+    beforeMount(){
+        this.isLoading = true;
+        this.getData();
     }
 }
 </script>
