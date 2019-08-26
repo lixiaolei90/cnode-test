@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
+    <div class="main">
+      <PostList></PostList>
+    </div>
+    
   </div>
 </template>
 
@@ -17,5 +21,9 @@ export default {
 </script>
 
 <style>
-
+  .main {
+    border: 1px solid red;
+    width: 80%;
+    margin: 0 auto;
+  }
 </style>
