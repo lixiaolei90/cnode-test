@@ -10,7 +10,7 @@
                 </div>
                 <ul>
                     <li>*发布于：{{post.create_at | formatDate}}</li>
-                    <li>*作者：{{post.author.loginname}}</li>
+                    <!-- <li>*作者：{{post.author.loginname}}</li> -->
                     <li>*{{post.visit_count}}次浏览</li>
                     <li>*来自{{post | tabFormatter}}</li>
                 </ul>
@@ -27,7 +27,25 @@ export default {
             isLoading: false,
             post:{} //代表当前的所有
         }
+    },
+    methods:{
+        getArticleData(){
+            this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
+        .then(res=>{
+            if(res.data.success == true) {
+                this.isLoading = false;
+                this.post = res.data.data;
+            }
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    },
+    beforeMount() {
+        this.isLoading = true;
+        this.getArticleData();
     }
+}
 }
 </script>
 
