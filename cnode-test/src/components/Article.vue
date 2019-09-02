@@ -21,10 +21,20 @@
               <div class="topbar">回复</div>
               <div v-for="(reply,index) in post.replies" class="replySec">
                 <div class="replyUp">
-                  <router-link :to="user_info">
+                  <router-link :to="{
+                    name:'user_info',
+                    params:{
+                      name: reply.author.loginname
+                    }
+                  }">
                     <img :src="reply.author.avatar_url" alt="">
                   </router-link>
-                  <router-link :to="user_info">
+                  <router-link :to="{
+                    name:'user_info',
+                    params:{
+                      name: reply.author.loginname
+                    }
+                  }">
                     <span>{{reply.author.loginname}}</span>
                   </router-link>
                 
