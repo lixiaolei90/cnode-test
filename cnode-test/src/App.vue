@@ -2,7 +2,9 @@
   <div id="app">
     <Header></Header>
     <div class="main">
+       <router-view name="slidebar"></router-view>
       <router-view name="main"></router-view>
+     
     </div>
     
   </div>
@@ -21,9 +23,8 @@ export default {
 </script>
 
 <style>
-  .main {
-    border: 1px solid red;
-    width: 80%;
-    margin: 0 auto;
-  }
+  .main{
+  width: 80%;
+  margin: 0 auto;
+}
 </style>
