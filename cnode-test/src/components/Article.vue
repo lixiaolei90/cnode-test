@@ -17,7 +17,7 @@
                 </ul>
                 <div v-html="post.content" class="topic_content"></div>
             </div>
-            <div>
+            <div id="reply">
               <div class="topbar">回复</div>
               <div v-for="(reply,index) in post.replies" class="replySec">
                 <div class="replyUp">
@@ -40,7 +40,7 @@
                 
                 <span>{{index+1}}楼</span>
                 <span v-if="reply.ups.length > 0" class="">
-                  {{reply.ups.length}}
+                  赞 {{reply.ups.length}}
                 </span>
                 <span v-else></span>
                 </div>
