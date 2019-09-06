@@ -16,7 +16,16 @@
         <div class="topbar">作者最近主题</div>
         <ul>
           <li v-for="list in topiclimitby5">
-            {{list.title}}
+            <router-link :to="{
+              name:'post_content',
+              params:{
+                id:list.id,
+                name:list.author.loginname
+              }
+            }">
+              {{list.title}}
+            </router-link>
+            
           </li>
         </ul>
     </div>
@@ -24,7 +33,15 @@
         <div class="topbar">作者最近回复</div>
         <ul>
           <li v-for="list in replylimitby5">
-            {{list.title}}
+                        <router-link :to="{
+              name:'post_content',
+              params:{
+                id:list.id,
+                name:list.author.loginname
+              }
+            }">
+              {{list.title}}
+            </router-link>
           </li>
         </ul>
     </div>
@@ -55,17 +72,13 @@ export default {
     },
     computed:{
       topiclimitby5(){
-        if(this.userinfo.recent_topics.length > 5) {
+        if(this.userinfo.recent_topics) {
           return this.userinfo.recent_topics.slice(0,5);
-        }else {
-          return this.userinfo.recent_topics;
         }
       },
       replylimitby5(){
-        if(this.userinfo.recent_replies.length > 5) {
+        if(this.userinfo.recent_replies) {
           return this.userinfo.recent_replies.slice(0, 5);
-        }else {
-          return this.userinfo.recent_replies;
         }
       }
     },
