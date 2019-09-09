@@ -44,12 +44,14 @@
                         {{post.last_reply_at | formatDate}}
                     </span>
                 </li>
+                <pagination></pagination>
             </ul>
         </div>
     </div>
 </template>    
 
 <script>
+import pagination from './Pagination'
 export default {
     name: "PostList",
     data() {
@@ -57,6 +59,9 @@ export default {
             isLoading: false,
             posts:[]
         }
+    },
+    components:{
+      pagination
     },
     methods: {
        getData(){
