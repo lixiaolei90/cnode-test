@@ -2,6 +2,7 @@
     <div class="pagination">
         <button @click="changeBtn">首页</button>
         <button @click="changeBtn">上一页</button>
+        <button v-if="judge" class="pageBtn">...</button>
         <button v-for="btn in pagebtns" 
         @click="changeBtn(btn)"
         :class="[{currentPage:btn == currentPage}, 'pagebtn']">
@@ -42,6 +43,11 @@ export default {
                 return;
             }
             this.currentPage = page;
+            if(page > 4){
+                this.judge = true;
+            }else {
+                this.judge = false;
+            }
             if(page == this.pagebtns[4]) {
                 this.pagebtns.shift();
                 this.pagebtns.splice(4,0,this.pagebtns[3]+1);
@@ -49,6 +55,8 @@ export default {
                 this.pagebtns.unshift(this.pagebtns[0]-1);
                 this.pagebtns.splice(5,1);
             }
+            
+            this.$emit('handleList',this.currentPage);
         }
     }
 }

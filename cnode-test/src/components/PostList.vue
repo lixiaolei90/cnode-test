@@ -44,7 +44,7 @@
                         {{post.last_reply_at | formatDate}}
                     </span>
                 </li>
-                <pagination></pagination>
+                <pagination @handleList="renderList"></pagination>
             </ul>
         </div>
     </div>
@@ -57,7 +57,8 @@ export default {
     data() {
         return {
             isLoading: false,
-            posts:[]
+            posts:[],
+            postpage:1
         }
     },
     components:{
@@ -66,8 +67,11 @@ export default {
     methods: {
        getData(){
            this.$http.get('https://cnodejs.org/api/v1/topics', {
-               page:1,
+             params:{
+               page:this.postpage,
                limit:20
+             }
+               
            })
             .then(res=>{
                 this.isLoading = false;
@@ -76,6 +80,12 @@ export default {
             .catch(function(err) {
                 console.log(err);
             })
+       },
+      
+       renderList(value){
+         
+         this.postpage = value;
+         this.getData();
        } 
     },
     beforeMount(){
